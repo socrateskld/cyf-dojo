@@ -19,12 +19,6 @@ const user4 = {
 
 const users = [user1, user2, user3, user4];
 
-let userAgeName = users.map((users) => {
-  if (users.age >= 18) {
-    return users.name;
-  }
-});
-console.log(userAgeName);
 // 1. average age of users?
 
 // First we get the ages from the Array
@@ -51,6 +45,15 @@ usersAge = usersAge.filter(adult);
 console.log(usersAge);
 
 // 3. all adult users names
+let userAgeName = users.map((users) => {
+  if (users.age >= 18) {
+    return users.name;
+  }
+});
+userAgeName = userAgeName.filter(function (names) {
+  return names !== undefined;
+});
+console.log(userAgeName);
 
 // 4. all users but with their name in UPPERCASE, e.g. { name: 'JACK' }
 let usersName = users.map((users) => {
