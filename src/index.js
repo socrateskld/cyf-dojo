@@ -18,36 +18,41 @@ const user4 = {
 };
 
 const users = [user1, user2, user3, user4];
-const usersAgeCall = [user1.age + user2.age + user3.age + user4.age];
-const usersAge = [user1.age, user2.age, user3.age, user4.age];
-const usersName = [user1.name, user2.name, user3.name, user4.name];
-
-function UsersAverageAge() {
-  let ages = usersAgeCall / users.length;
-  console.log("The average age is", ages);
-}
-
-function onlyAdultUsers() {
-  for (let i = 0; i < usersAge.length; i++) {
-    let adult = usersAge[i] > 18;
-    console.log(adult);
-  }
-}
-function AllNameUpper() {
-  for (let i = 0; i < usersName.length; i++) {
-    let names = usersName[i];
-    console.log(names.toUpperCase());
-  }
-}
-
-UsersAverageAge();
-onlyAdultUsers();
-AllNameUpper();
 
 // 1. average age of users?
 
+// First we get the ages from the Array
+let usersAge = users.map((user) => {
+  return user.age;
+});
+// Second we sum the ages
+let totalAge = 0;
+users.forEach((item) => {
+  totalAge = totalAge + item.age;
+});
+// Third we get the average
+let average = totalAge / usersAge.length;
+
+console.log(`"The average ages is" ${average}`);
+
 // 2. all adult users
+//  Function to find ages 18 and higher
+function adult(age) {
+  return age >= 18;
+}
+usersAge = usersAge.filter(adult);
+
+console.log(usersAge);
 
 // 3. all adult users names
+// Names from the array
+// let usersName = users.map((users) => {
+//   return users.name;
+// });
 
 // 4. all users but with their name in UPPERCASE, e.g. { name: 'JACK' }
+let usersName = users.map((users) => {
+  return users.name.toUpperCase();
+});
+
+console.log(usersName);
